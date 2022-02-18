@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){  
+                let answer=0;
+                let 가로=0,세로=0,대각선=0,대각선2=0;
+                let 젤큰가로=0,젤큰세로=0;
+                for(let i=0;i<arr.length;i++){
+                    for(let j=0;j<arr.length;j++){
+                        가로 += arr[i][j];
+                        세로 += arr[j][i];
+                        if(i == j) 대각선 += arr[i][j];
+                        if(arr.length-i-1 == j) 대각선2 += arr[i][j];
+                    }
+                    if(젤큰가로<가로) 젤큰가로 = 가로;
+                    if(젤큰세로<세로) 젤큰세로 = 세로;
+                    가로 = 0;
+                    세로 = 0;
+                }
+                answer = Math.max(젤큰가로, 젤큰세로, 대각선, 대각선2);
+                return answer;
+            }
+
+            let arr=[[10, 13, 10, 12, 15], 
+                     [12, 39, 30, 23, 11],
+                     [11, 25, 50, 53, 15],
+                     [19, 27, 29, 37, 27],
+                     [19, 13, 30, 13, 19]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
